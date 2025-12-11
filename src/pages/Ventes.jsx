@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchVentes, removeVentes } from '../redux/VentesSlice';
-import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutlined';
-import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import AddIcon from '@mui/icons-material/Add';
 import { Link } from 'react-router-dom';
+import Vente from '../components/Vente';
 
 const Ventes = () => {
   const [delteConfirme, setDeleteConfirme] = useState(null)
   const dispatch = useDispatch();
   const { data, loading } = useSelector((state) => state.ventes);
-
+  const test = []
   useEffect(() => {
     dispatch(fetchVentes());
   }, [dispatch]);
@@ -21,7 +20,7 @@ const Ventes = () => {
     return total
 
   }
-  const totalGeneral = data.reduce((sum, sale) => sum + montantTotal(sale.unit_price, sale.quantity), 0);
+  const totalGeneral = data.reduce((sum, sale) => sum + montantTotal(sale.prixUnitaire, sale.quantite), 0);
 
   const handleDelete = (id) => {
     dispatch(removeVentes(id))
@@ -57,56 +56,25 @@ const Ventes = () => {
                   <th className="px-6 py-3 text-left ">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y">
-                {data.map((sale) => (
-                  <tr key={sale.id} className="hover:bg-main text-third border-b border-border">
-                    <td className="px-6 py-4 ">
-                      {new Date(sale.date).toLocaleDateString('fr-FR')}
-                    </td>
-                    <td className="px-6 py-4 ">{sale.product}</td>
-                    <td className="px-6 py-4 ">{sale.client}</td>
-                    <td className="px-6 py-4 ">{sale.quantity}</td>
-                    <td className="px-6 py-4 ">{sale.unit_price.toLocaleString('fr-FR')} DH</td>
-                    <td className="px-6 py-4 ">{montantTotal(sale.unit_price, sale.quantity).toLocaleString('fr-FR')} DH</td>
-                    <td className="px-6 py-4">
-                      <span className={`px-2 py-1 rounded-full text-sm ${sale.payment === 'Espèces' ? 'bg-green-100 text-green-800' :
-                        sale.payment === 'Carte' ? 'bg-blue-100 text-blue-800' :
-                          sale.payment === 'Virement' ? 'bg-purple-100 text-purple-800' :
-                            'bg-orange-100 text-orange-800'
-                        }`}>
-                        {sale.payment}
-                      </span>
-                    </td>
-                    <td className="px-6 py-4 text-third">{sale.seller}</td>
-                    <td className="px-6 py-4">
-                      <div className="flex gap-2">
-                        <Link
-                          to={`/ventes/modifier/${sale.id}`}
-                          className="p-2 text-blue-600 hover:bg-background rounded transition-colors"
-                          title="Modifier"
-                        >
-                          <ModeEditOutlineOutlinedIcon className="w-4 h-4" />
-                        </Link>
-                        {delteConfirme === sale.id ? (
-                          <>
-                            <button onClick={() => handleDelete(sale.id)} className="px-2 py-1 text-sm bg-red-600 text-white rounded hover:bg-red-700">Confirmer</button>
-                            <button onClick={() => setDeleteConfirme(null)} className="px-2 py-1 text-sm bg-gray-300 text-gray-700 rounded hover:bg-gray-400">Annuler</button>
-                          </>
-                        ) : (
-                          <button onClick={() => setDeleteConfirme(sale.id)} className="p-2 cursor-pointer text-red-600 hover:bg-background rounded transition-colors"><DeleteOutlineOutlinedIcon /></button>
-                        )}
-                      </div>
-                    </td>
+              {data.length !== 0 ? (<>
+                <tbody className="divide-y">
+                  {data.map((sale) => (
+
+                    <Vente key={sale.id} id={sale.id} date={sale.date} product={sale.produit} client={sale.client} quantity={sale.quantite} unit_price={sale.prixUnitaire} montantTotal={montantTotal} payment={sale.modePaiement} seller={sale.vendeur} delteConfirme={delteConfirme} setDeleteConfirme={setDeleteConfirme} handleDelete={handleDelete} />
+                  ))}
+                </tbody>
+                <tfoot className="bg-background border-t-2 border-border">
+                  <tr className='text-secondary'>
+                    <td colSpan={5} className="px-6 py-4">Total Général</td>
+                    <td className="p-5 ">{totalGeneral.toLocaleString('fr-FR')} DH</td>
+                    <td colSpan={3}></td>
                   </tr>
-                ))}
-              </tbody>
-              <tfoot className="bg-background border-t-2 border-border">
-                <tr className='text-secondary'>
-                  <td colSpan={5} className="px-6 py-4">Total Général</td>
-                  <td className="px-6 py-4 ">{totalGeneral.toLocaleString('fr-FR')} DH</td>
-                  <td colSpan={3}></td>
-                </tr>
-              </tfoot>
+                </tfoot>
+              </>) : <tr>
+                <td colSpan={9} className="p-6 text-center text-third">
+                  Aucune vente n'est disponible pour le moment.
+                </td>
+              </tr>}
             </table>
           </div>
         </div>

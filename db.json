@@ -1,64 +1,84 @@
 {
   "ventes": [
     {
-      "id": "3",
-      "product": "HP Pavilion Laptop",
-      "quantity": 3,
-      "unit_price": 7600,
+      "produit": "HP Pavilion Laptop",
+      "quantite": 1,
+      "prixUnitaire": 7600,
       "client": "Omar Taouil",
       "date": "2025-01-05",
-      "payment": "Virement",
-      "seller": "Karim"
+      "modePaiement": "Virement",
+      "vendeur": "Mohemmed",
+      "id": "3"
     },
     {
       "id": "4",
-      "product": "AirPods Pro",
-      "quantity": 4,
-      "unit_price": 2000,
+      "produit": "AirPods Pro",
+      "quantite": 4,
+      "prixUnitaire": 2000,
       "client": "Khadija Idrissi",
       "date": "2025-01-10",
-      "payment": "Espèces",
-      "seller": "Hicham"
+      "modePaiement": "Espèces",
+      "vendeur": "Hicham"
     },
     {
-      "id": "5",
-      "product": "Dell Latitude 3520",
-      "quantity": 1,
-      "unit_price": 8300,
+      "produit": "Dell Latitude 3520",
+      "quantite": 5,
+      "prixUnitaire": 8300,
       "client": "Soufiane Akil",
       "date": "2025-01-09",
-      "payment": "Chèque",
-      "seller": "Karim"
+      "modePaiement": "Chèque",
+      "vendeur": "Karim",
+      "id": "5"
     },
     {
       "id": "6",
-      "product": "Sony WH-1000XM4 Headphones",
-      "quantity": 2,
-      "unit_price": 3900,
+      "produit": "Sony WH-1000XM4 Headphones",
+      "quantite": 2,
+      "prixUnitaire": 3900,
       "client": "Imane Ziani",
       "date": "2025-01-04",
-      "payment": "Carte",
-      "seller": "Salim"
+      "modePaiement": "Carte",
+      "vendeur": "Salim"
     },
     {
       "id": "7",
-      "product": "Lenovo ThinkPad E15",
-      "quantity": 1,
-      "unit_price": 9100,
+      "produit": "Lenovo ThinkPad E15",
+      "quantite": 1,
+      "prixUnitaire": 9100,
       "client": "Adil Lahmidi",
       "date": "2025-01-11",
-      "payment": "Virement",
-      "seller": "Karim"
+      "modePaiement": "Virement",
+      "vendeur": "Karim"
     },
     {
       "id": "9",
-      "product": "HP Pavilion Laptop",
-      "quantity": 3,
-      "unit_price": 7600,
+      "produit": "HP Pavilion Laptop",
+      "quantite": 3,
+      "prixUnitaire": 7600,
       "client": "Youssef Ahrouch",
       "date": "2025-02-05",
-      "payment": "Carte",
-      "seller": "Karim"
+      "modePaiement": "Carte",
+      "vendeur": "Karim"
+    },
+    {
+      "id": "a004",
+      "produit": "Iphone 17",
+      "quantite": 2,
+      "prixUnitaire": 15870,
+      "client": "Hicham Ahrouch",
+      "date": "2024-02-06",
+      "modePaiement": "Chèque",
+      "vendeur": "Salim"
+    },
+    {
+      "id": "e468",
+      "produit": "samsung galaxy A07",
+      "quantite": 5,
+      "prixUnitaire": 1449.98,
+      "client": "Youssef Ahrouch",
+      "date": "2025-12-11",
+      "modePaiement": "Espèces",
+      "vendeur": "Karim"
     }
   ]
 }
