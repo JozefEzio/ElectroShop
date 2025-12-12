@@ -9,7 +9,6 @@ const Ventes = () => {
   const [delteConfirme, setDeleteConfirme] = useState(null)
   const dispatch = useDispatch();
   const { data, loading } = useSelector((state) => state.ventes);
-  const test = []
   useEffect(() => {
     dispatch(fetchVentes());
   }, [dispatch]);

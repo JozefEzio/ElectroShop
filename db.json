@@ -61,7 +61,7 @@
       "vendeur": "Karim"
     },
     {
-      "id": "a004",
+      "id": "10",
       "produit": "Iphone 17",
       "quantite": 2,
       "prixUnitaire": 15870,
@@ -71,14 +71,24 @@
       "vendeur": "Salim"
     },
     {
-      "id": "e468",
+      "id": "11",
       "produit": "samsung galaxy A07",
-      "quantite": 5,
+      "quantite": 30,
       "prixUnitaire": 1449.98,
       "client": "Youssef Ahrouch",
       "date": "2025-12-11",
       "modePaiement": "Espèces",
       "vendeur": "Karim"
+    },
+    {
+      "id": "2628",
+      "produit": "MSI Raider 18 HX AI",
+      "quantite": 10,
+      "prixUnitaire": 16000,
+      "client": "Youssef Ahrouch",
+      "date": "2025-12-12",
+      "modePaiement": "Carte",
+      "vendeur": "Mohemmed"
     }
   ]
 }
