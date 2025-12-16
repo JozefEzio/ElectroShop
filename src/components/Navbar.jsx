@@ -9,7 +9,7 @@ import ElectricBoltIcon from '@mui/icons-material/ElectricBolt';
 
 const Navbar = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-    const [activeLink, setActiveLink] = useState('dashboard');
+    const [activeLink, setActiveLink] = useState('');
     return (
         <nav className="bg-background border-b border-border sticky top-0 z-50 shadow-sm">
             <div className="container mx-auto px-4">
