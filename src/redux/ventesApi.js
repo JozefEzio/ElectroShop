@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const api = axios.create({
-    baseURL: 'http://localhost:3001/ventes'
+    baseURL: 'https://electroshop-api-production.up.railway.app/ventes'
 })
 
 export const fetchVentesApi = () => api.get('/');

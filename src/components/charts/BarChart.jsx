@@ -1,45 +1,50 @@
-import Box from '@mui/material/Box';
-import { BarChart } from '@mui/x-charts/BarChart';
+import React from 'react';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
-export default function SimpleBarChart({ last7Days }) {
-    const xLabels = last7Days.map(d => d.date)
-    const pData = last7Days.map(m => m.montant);
-    return (
-        <Box sx={{ width: '100%', height: 350 }}>
-            <BarChart
-                series={[
-                    {
-                        data: pData,
-                        label: 'CA des 7 derniers jours',
-                        id: 'pvId',
-                        color: 'var(--color-btn)', 
-                    },
-                ]}
-                xAxis={[{
-                    scaleType: 'band',
-                    data: xLabels,
-                    tickLabelStyle: {
-                        fill: 'var(--color-third)', 
-                        fontSize: 14,
-                    },
-                    axisLineStyle: {
-                        stroke: 'var(--color-third)', 
-                    },
-                }]}
-
-                yAxis={[{
-                    width: 100,
-                    label: 'Revenu (DH)',
-                    labelStyle: { fill: 'var(--color-third)' }, 
-                    tickLabelStyle: { fill: 'var(--color-third)' },
-                    axisLineStyle: { stroke: 'var(--color-third)' }, 
-                    gridLineStyle: { stroke: 'var(--color-third)' },  
-                }]}
-
-                margin={{ top: 20, right: 30, left: 60, bottom: 40 }}
-            />
-
-
-        </Box>
-    );
+function SimpleBarChart({ last7Days }) {
+  return (
+    <ResponsiveContainer width="100%" height={350}>
+      <BarChart
+        data={last7Days}
+        margin={{ top: 20, right: 30, left: 20, bottom: 40 }}
+      >
+        <CartesianGrid strokeDasharray="3 3" stroke="#e0e0e0" />
+        <XAxis 
+          dataKey="date" 
+          tick={{ fill: 'var(--color-third)', fontSize: 14 }}
+          stroke="var(--color-third)"
+        />
+        <YAxis 
+          label={{ 
+            value: 'Revenu (DH)', 
+            angle: -90, 
+            position: 'insideLeft',
+            style: { fill: 'var(--color-third)' }
+          }}
+          tick={{ fill: 'var(--color-third)' }}
+          stroke="var(--color-third)"
+          width={80}
+        />
+        <Tooltip 
+          contentStyle={{ 
+            backgroundColor: '#fff', 
+            border: '1px solid #ccc',
+            borderRadius: '4px'
+          }}
+          formatter={(value) => [`${value.toLocaleString('fr-FR')} DH`, 'Revenu']}
+        />
+        <Legend 
+          wrapperStyle={{ paddingTop: '10px' }}
+          formatter={() => 'CA des 7 derniers jours'}
+        />
+        <Bar 
+          dataKey="montant" 
+          fill="var(--color-btn)" 
+          radius={[8, 8, 0, 0]}
+          name="CA des 7 derniers jours"
+        />
+      </BarChart>
+    </ResponsiveContainer>
+  );
 }
+export default SimpleBarChart

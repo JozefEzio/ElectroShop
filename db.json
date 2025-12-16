@@ -1,17 +1,17 @@
 {
   "ventes": [
     {
+      "id": "2",
       "produit": "HP Pavilion Laptop",
       "quantite": 1,
       "prixUnitaire": 7600,
       "client": "Omar Taouil",
       "date": "2025-01-05",
       "modePaiement": "Virement",
-      "vendeur": "Mohemmed",
-      "id": "3"
+      "vendeur": "Mohemmed"
     },
     {
-      "id": "4",
+      "id": "3",
       "produit": "AirPods Pro",
       "quantite": 4,
       "prixUnitaire": 2000,
@@ -21,14 +21,14 @@
       "vendeur": "Hicham"
     },
     {
+      "id": "4",
       "produit": "Dell Latitude 3520",
       "quantite": 5,
       "prixUnitaire": 8300,
       "client": "Soufiane Akil",
       "date": "2025-01-09",
       "modePaiement": "Chèque",
-      "vendeur": "Karim",
-      "id": "5"
+      "vendeur": "Karim"
     },
     {
       "id": "6",

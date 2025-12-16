@@ -4,6 +4,14 @@ import { editVentes, fetchVenteById } from '../redux/VentesSlice';
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import SaveIcon from '@mui/icons-material/Save';
+import InventoryIcon from '@mui/icons-material/Inventory';
+import BadgeIcon from '@mui/icons-material/Badge';
+import PersonIcon from '@mui/icons-material/Person';
+import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
+import PaymentIcon from '@mui/icons-material/Payment';
+import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
+import NumbersIcon from '@mui/icons-material/Numbers';
+
 
 const EditVentes = () => {
   const { id } = useParams();
@@ -104,12 +112,13 @@ const EditVentes = () => {
           <KeyboardBackspaceIcon />
           Retour à la liste
         </Link>
-       {vente?( <div className="bg-background rounded-lg shadow-md p-8">
-          <h2 className="mb-6 text-secondary">Modifier la Vente</h2>
+        {vente ? (<div className="bg-background rounded-lg shadow-md p-8">
+          <h1 className="text-3xl font-bold mb-8">Modifier une Vente</h1>
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
-              <label htmlFor="produit" className="block text-secondary mb-2">
-                Produit *
+              <label htmlFor="produit" className="flex items-center gap-2 text-secondary font-medium mb-2">
+                <InventoryIcon className="w-4 h-4" />
+                Nom du Produit *
               </label>
               <input
                 type="text"
@@ -125,7 +134,8 @@ const EditVentes = () => {
             </div>
             <div className="grid md:grid-cols-2 gap-6">
               <div>
-                <label htmlFor="quantite" className="block text-secondary mb-2">
+                <label htmlFor="quantite" className="flex items-center gap-2 text-secondary font-medium mb-2">
+                  <NumbersIcon className="w-4 h-4" />
                   Quantité *
                 </label>
                 <input
@@ -142,7 +152,8 @@ const EditVentes = () => {
               </div>
 
               <div>
-                <label htmlFor="prixUnitaire" className="block text-secondary mb-2">
+                <label htmlFor="prixUnitaire" className="flex items-center gap-2 text-secondary font-medium mb-2">
+                  <AttachMoneyIcon className="w-4 h-4" />
                   Prix Unitaire (DH) *
                 </label>
                 <input
@@ -159,12 +170,15 @@ const EditVentes = () => {
               </div>
             </div>
             <div className="bg-main border border-indigo-200 rounded-lg p-4">
-              <p className="text-secondary">Montant Total</p>
-              <p className="text-3xl text-primary">{montantTotal.toLocaleString('fr-FR')} DH</p>
+              <p className="text-sm text-fourth font-medium mb-1">Montant Total</p>
+              <p className="text-3xl font-bold text-primary">
+                {montantTotal.toLocaleString('fr-FR')} DH
+              </p>
             </div>
             <div>
-              <label htmlFor="client" className="block text-secondary mb-2">
-                Client *
+              <label htmlFor="client" className="flex items-center gap-2 text-secondary font-medium mb-2">
+                <PersonIcon className="w-4 h-4" />
+                Nom du Client *
               </label>
               <input
                 type="text"
@@ -172,7 +186,6 @@ const EditVentes = () => {
                 name="client"
                 value={formData.client}
                 onChange={handleChange}
-
                 className="w-full text-third px-4 py-2 border border-border rounded-lg focus:ring-2 focus:ring-btn focus:border-transparent focus:outline-0"
                 placeholder="Ex: Ahmed Bennani"
               />
@@ -181,8 +194,9 @@ const EditVentes = () => {
 
             <div className="grid md:grid-cols-2 gap-6">
               <div>
-                <label htmlFor="date" className="block text-secondary mb-2">
-                  Date *
+                <label htmlFor="date" className="flex items-center gap-2 text-secondary font-medium mb-2">
+                  <CalendarTodayIcon className="w-4 h-4" />
+                  Date de Vente *
                 </label>
                 <input
                   type="date"
@@ -198,16 +212,17 @@ const EditVentes = () => {
               </div>
 
               <div>
-                <label htmlFor="modePaiement" className="block text-secondary mb-2">
+                <label htmlFor="modePaiement" className="flex items-center gap-2 text-secondary font-medium mb-2">
+                  <PaymentIcon className="w-4 h-4" />
                   Mode de Paiement *
                 </label>
+
                 <select
                   id="modePaiement"
                   name="modePaiement"
                   value={formData.modePaiement}
                   onChange={handleChange}
-
-                  className="w-full text-third px-4 py-2 border border-border rounded-lg focus:ring-2 focus:ring-btn focus:border-transparent focus:outline-0"
+                  className="w-full text-third px-4 py-2 border border-border bg-background cursor-pointer rounded-lg focus:ring-2 focus:ring-btn focus:border-transparent focus:outline-0 "
                 >
                   {paymentMethod.map((p, i) => <option key={i} value={p}>{p}</option>)}
                 </select>
@@ -215,8 +230,9 @@ const EditVentes = () => {
               </div>
             </div>
             <div>
-              <label htmlFor="vendeur" className="block text-secondary mb-2">
-                Vendeur *
+              <label htmlFor="vendeur" className="flex items-center gap-2 text-secondary font-medium mb-2">
+                <BadgeIcon className="w-4 h-4" />
+                Nom du Vendeur *
               </label>
               <input
                 type="text"
@@ -237,7 +253,7 @@ const EditVentes = () => {
                 className="flex-1 bg-btn text-white px-6 py-3 rounded-lg hover:bg-btn transition-colors flex items-center justify-center gap-2 shadow-md"
               >
                 <SaveIcon className="w-5 h-5" />
-                {isSubmitting ? 'Enregistrement...' : 'Enregistrer les Modifications'}
+                {isSubmitting ? 'Enregistrement...' : 'Enregistrer la Vente'}
               </button>
               <Link
                 to="/ventes"
@@ -248,7 +264,7 @@ const EditVentes = () => {
             </div>
           </form>
 
-        </div>):<p className='text-secondary text-center p-5'>La vente avec l’ID {id} n’existe pas.</p>}
+        </div>) : <p className='text-secondary text-center p-5'>La vente avec l’ID {id} n’existe pas.</p>}
       </div>
     </div>
   )

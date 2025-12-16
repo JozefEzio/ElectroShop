@@ -2,10 +2,11 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchVentes } from '../redux/VentesSlice';
 import Kpis from '../components/Kpi/Kpis';
-import Barchart from '../components/charts/BarChart';
 import SimplePieChart from '../components/charts/PieChart';
 import SimpleBarChart from '../components/charts/BarChart';
 import TopVentes from '../components/TopVentes';
+
+
 const Dashboard = () => {
   const { data } = useSelector(state => state.ventes)
   const last7Days = [];
@@ -62,6 +63,10 @@ const Dashboard = () => {
   return (
     <>
       <div className='container mx-auto px-4 py-8'>
+        <div className="mb-8">
+          <h1 className="text-4xl font-bold text-secondary mb-2"> Tableau de Bord</h1>
+          <p className="text-third">Aperçu de vos performances commerciales</p>
+        </div>
         <Kpis data={data} />
         <div className='grid lg:grid-cols-2 gap-6 mb-8'>
           <div className="bg-background rounded-lg p-6 shadow-md">
