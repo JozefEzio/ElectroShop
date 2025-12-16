@@ -14,7 +14,7 @@ const Navbar = () => {
         <nav className="bg-background border-b border-border sticky top-0 z-50 shadow-sm">
             <div className="container mx-auto px-4">
                 <div className="flex items-center justify-between h-16">
-                    <Link to={'/'} className="flex items-center gap-3">
+                    <Link to={'/'} onClick={() => setActiveLink('')} className="flex items-center gap-3">
                         <div className="p-2 bg-gradient-to-br from-btn to-indigo-600 rounded-lg shadow-md">
                             <ElectricBoltIcon className="w-5 h-5 text-white" />
                         </div>
