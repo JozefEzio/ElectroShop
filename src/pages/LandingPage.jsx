@@ -3,6 +3,7 @@ import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import TrendingUpOutlinedIcon from '@mui/icons-material/TrendingUpOutlined';
 import PeopleOutlineOutlinedIcon from '@mui/icons-material/PeopleOutlineOutlined';
 import { Link } from 'react-router-dom';
+import equipeImg from '../assets/equipe.jpg';
 const LandingPage = () => {
     return (
         <>
@@ -78,10 +79,11 @@ const LandingPage = () => {
                     <div className="flex flex-col items-center">
                         <div className="w-32 h-32 rounded-full overflow-hidden mb-6 shadow-lg bg-gray-100">
                             <img
-                                src="equipe.jpg"
-                                className="w-full h-full object-cover"
+                                src={equipeImg}
                                 alt="Créateurs du projet"
+                                className="w-full h-full object-cover"
                             />
+
                         </div>
 
                         <div className="grid md:grid-cols-2 gap-8 text-center">
