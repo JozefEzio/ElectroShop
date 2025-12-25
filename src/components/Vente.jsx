@@ -73,7 +73,7 @@ const Vente = ({ id, date, product, client, quantity, unit_price, montantTotal, 
                             </Link>
                             <button
                                 onClick={() => setDeleteConfirme(id)}
-                                className="p-2 text-red-600 hover:bg-red-50 dark:hover:bg-red-900/30 rounded-lg transition-colors"
+                                className="p-2 cursor-pointer text-red-600 hover:bg-red-50 dark:hover:bg-red-900/30 rounded-lg transition-colors"
                                 title="Supprimer"
                             >
                                 <DeleteOutlineOutlinedIcon className="w-5 h-5" />

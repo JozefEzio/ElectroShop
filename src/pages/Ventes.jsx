@@ -6,12 +6,18 @@ import Vente from '../components/Vente';
 import AddIcon from '@mui/icons-material/Add';
 import ReceiptLongIcon from '@mui/icons-material/ReceiptLong';
 import SearchIcon from '@mui/icons-material/Search';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
 const Ventes = () => {
   const [delteConfirme, setDeleteConfirme] = useState(null)
   const [searchTerm, setSearchTerm] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage] = useState(5);
+
   const { data } = useSelector((state) => state.ventes);
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(fetchVentes());
   }, [dispatch]);
@@ -25,11 +31,28 @@ const Ventes = () => {
     dispatch(removeVentes(id))
     setDeleteConfirme(null)
   }
+
   const filteredData = data.filter(vente =>
     vente.produit.toLowerCase().includes(searchTerm.toLowerCase()) ||
     vente.client.toLowerCase().includes(searchTerm.toLowerCase()) ||
     vente.vendeur.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem);
+  const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchTerm]);
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+  console.log(filteredData)
+
+
   return (
     <>
       <div className="container mx-auto px-4 py-8">
@@ -40,6 +63,7 @@ const Ventes = () => {
           </div>
           <p className="text-fourth">Gérez et suivez toutes vos transactions commerciales</p>
         </div>
+
         <div className="bg-background rounded-xl shadow-md p-6 mb-6 border border-border">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <div className="flex-1 max-w-md">
@@ -83,7 +107,7 @@ const Ventes = () => {
               {filteredData.length !== 0 ? (
                 <>
                   <tbody className="divide-y divide-border">
-                    {filteredData.map((vente) => (
+                    {currentItems.map((vente) => (
                       <Vente
                         key={vente.id}
                         id={vente.id}
@@ -129,6 +153,45 @@ const Ventes = () => {
             </table>
           </div>
         </div>
+
+        {filteredData.length > itemsPerPage && (
+          <div className="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4 bg-background rounded-xl shadow-md p-4 border border-border">
+            <div className="text-third text-sm">
+              Affichage de <span className="font-semibold">{indexOfFirstItem +1}</span> à{' '}
+              <span className="font-semibold">{Math.min(indexOfLastItem, filteredData.length)}</span> sur{' '}
+              <span className="font-semibold">{filteredData.length}</span> ventes
+            </div>
+
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => handlePageChange(currentPage - 1)}
+                disabled={currentPage === 1}
+                className={`p-2 rounded-lg border border-border transition-colors ${currentPage === 1
+                    ? 'bg-main text-fourth cursor-not-allowed'
+                    : 'bg-main text-third hover:bg-slate-100 dark:hover:bg-slate-700'
+                  }`}
+              >
+                <ChevronLeftIcon />
+              </button>
+
+              <div className="px-4 py-2 rounded-lg bg-main text-third border border-border">
+                Page <span className="font-semibold">{currentPage}</span> sur{' '}
+                <span className="font-semibold">{totalPages}</span>
+              </div>
+
+              <button
+                onClick={() => handlePageChange(currentPage + 1)}
+                disabled={currentPage === totalPages}
+                className={`p-2 rounded-lg border border-border transition-colors ${currentPage === totalPages
+                    ? 'bg-main text-fourth cursor-not-allowed'
+                    : 'bg-main text-third hover:bg-slate-100 dark:hover:bg-slate-700'
+                  }`}
+              >
+                <ChevronRightIcon />
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </>
   );
