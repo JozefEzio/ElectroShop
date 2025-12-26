@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchVentes } from '../redux/VentesSlice';
+import { fetchVentes } from '../redux/ventesSlice';
 import Kpis from '../components/Kpi/Kpis';
 import SimplePieChart from '../components/charts/PieChart';
 import SimpleBarChart from '../components/charts/BarChart';
