@@ -100,7 +100,7 @@ const AjouterVentes = () => {
                 onChange={handleChange}
 
                 className="w-full text-third px-4 py-2 border border-border rounded-lg focus:ring-2 focus:ring-btn focus:border-transparent focus:outline-0"
-                placeholder="Ex: Smartphone Samsung Galaxy A54"
+                
               />
               {errors.produit && <p className="text-red-500 text-sm mt-1">{errors.produit}</p>}
             </div>
@@ -159,7 +159,6 @@ const AjouterVentes = () => {
                 value={formData.client}
                 onChange={handleChange}
                 className="w-full text-third px-4 py-2 border border-border rounded-lg focus:ring-2 focus:ring-btn focus:border-transparent focus:outline-0"
-                placeholder="Ex: Ahmed Bennani"
               />
               {errors.client && <p className="text-red-500 text-sm mt-1">{errors.client}</p>}
             </div>
@@ -176,7 +175,6 @@ const AjouterVentes = () => {
                   name="date"
                   value={formData.date}
                   onChange={handleChange}
-
                   className="w-full text-third px-4 py-2 border border-border rounded-lg focus:ring-2 focus:ring-btn focus:border-transparent focus:outline-0"
                 />
                 {errors.date && <p className="text-red-500 text-sm mt-1">{errors.date}</p>}
@@ -214,7 +212,6 @@ const AjouterVentes = () => {
                 onChange={handleChange}
 
                 className="w-full text-third px-4 py-2 border border-border rounded-lg focus:ring-2 focus:ring-btn focus:border-transparent focus:outline-0"
-                placeholder="Ex: Karim"
               />
               {errors.vendeur && <p className="text-red-500 text-sm mt-1">{errors.vendeur}</p>}
             </div>
