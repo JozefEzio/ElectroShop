@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { ajouterVentes } from '../redux/VentesSlice';
+import { ajouterVentes } from '../redux/ventesSlice';
 import { Link, useNavigate } from 'react-router-dom'
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import SaveIcon from '@mui/icons-material/Save';

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { editVentes, fetchVenteById } from '../redux/VentesSlice';
+import { editVentes, fetchVenteById } from '../redux/ventesSlice';
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import SaveIcon from '@mui/icons-material/Save';
